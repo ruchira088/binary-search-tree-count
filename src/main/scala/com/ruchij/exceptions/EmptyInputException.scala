@@ -1,4 +1,4 @@
-package com.ruchij.utils.exceptions
+package com.ruchij.exceptions
 
 object EmptyInputException extends Exception
 {

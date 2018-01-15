@@ -1,7 +1,7 @@
 package com.ruchij
 
 import com.ruchij.utils.GeneralUtils
-import com.ruchij.utils.exceptions.{EmptyInputException, InputArgumentsMismatchException}
+import com.ruchij.exceptions.{EmptyInputException, InputArgumentsMismatchException}
 
 import scala.util.{Failure, Success, Try}
 

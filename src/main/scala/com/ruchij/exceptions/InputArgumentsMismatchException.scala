@@ -1,4 +1,4 @@
-package com.ruchij.utils.exceptions
+package com.ruchij.exceptions
 
 case class InputArgumentsMismatchException(expected: Int, actual: Int) extends Exception
 {

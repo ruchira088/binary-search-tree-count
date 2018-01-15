@@ -28,4 +28,16 @@ object GeneralUtils
 
   def predicate(condition: Boolean, exception: => Exception): Try[Unit] =
     if (condition) Success((): Unit) else Failure(exception)
+
+  case class Split[T](left: List[T], right: List[T])
+
+  def split[T](value: T, list: List[T]): Option[Split[T]] =
+    list match {
+      case Nil => None
+      case x :: xs if x == value => Some(Split(List.empty, xs))
+      case x :: xs => split(value, xs)
+        .map {
+          case Split(left, right) => Split(x :: left, right)
+        }
+    }
 }

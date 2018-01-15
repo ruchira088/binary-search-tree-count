@@ -1,6 +1,6 @@
-package com.ruchj
+package com.ruchij
 
-import com.ruchij.BinarySearchTreeCount
+import com.ruchij.counter.{CustomMemoizeCounter, StreamCounter}
 import org.scalatest.{FlatSpec, Matchers}
 
 class BinarySearchTreeCountTest extends FlatSpec with Matchers
@@ -22,9 +22,14 @@ class BinarySearchTreeCountTest extends FlatSpec with Matchers
         97 -> 38445476
       )
 
-      inputs.foreach {
-        case (input, expectedOutput) =>
-          BinarySearchTreeCount.calculate(input) shouldEqual expectedOutput
-      }
+      List[Int => Int](CustomMemoizeCounter.count(_, App.MOD), StreamCounter.count(_, App.MOD))
+          .foreach {
+            calculate =>
+              inputs.foreach {
+                case (input, expectedOutput) =>
+                  calculate(input) shouldEqual expectedOutput
+              }
+          }
+
     }
 }
